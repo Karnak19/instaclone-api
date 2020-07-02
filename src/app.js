@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
@@ -9,7 +10,11 @@ const { notFound, errorHandler } = require("./middlewares");
 
 const app = express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: process.env.CLIEN_URL,
+  })
+);
 app.use(helmet());
 app.use(express.json());
 
