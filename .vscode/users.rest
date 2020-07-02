@@ -1,0 +1,16 @@
+GET http://localhost:4040/api/v1/users HTTP/1.1
+
+###
+GET http://localhost:4040/api/v1/users/1668a2c2-a393-43b5-b2b5-98cf9a9b2ce8/posts HTTP/1.1
+
+###
+POST http://localhost:4040/api/v1/users HTTP/1.1
+Content-Type: application/json
+
+{
+  "firstName": "Basile",
+  "lastName": "Vernouillet",
+  "email": "basile65.v@gmail.com",
+  "password": "test"
+}
+

@@ -1,0 +1,12 @@
+GET http://localhost:4040/api/v1/posts HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE2NjhhMmMyLWEzOTMtNDNiNS1iMmI1LTk4Y2Y5YTliMmNlOCIsImVtYWlsIjoiYmFzaWxlNjQudkBnbWFpbC5jb20iLCJpYXQiOjE1OTM2OTgxMTAsImV4cCI6MTU5MzcwMTcxMH0.QQeXWSMLjFhqRj_ImgQCs-jDCkxUXENX1DOYVB-CBGY
+
+###
+POST http://localhost:4040/api/v1/posts HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE2NjhhMmMyLWEzOTMtNDNiNS1iMmI1LTk4Y2Y5YTliMmNlOCIsImVtYWlsIjoiYmFzaWxlNjQudkBnbWFpbC5jb20iLCJpYXQiOjE1OTM2OTgxMTAsImV4cCI6MTU5MzcwMTcxMH0.QQeXWSMLjFhqRj_ImgQCs-jDCkxUXENX1DOYVB-CBGY
+
+
+{
+  "desc": "Lorem Ipsum"
+} 
