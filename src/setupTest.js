@@ -1,12 +1,14 @@
 const db = require("../db");
 const User = require("./api/users/users.model");
-const { testUserId, testPostId } = require("./util");
+const { testPostId, testUserUsername } = require("./util");
 const Post = require("./api/posts/posts.model");
 
 module.exports = async () => {
+  require("../db/associations");
+
   await db.sync({ force: true });
   await User.create({
-    id: testUserId,
+    username: testUserUsername,
     firstName: "John",
     lastName: "Doe",
     email: "johndoe@gmail.com",
@@ -14,10 +16,10 @@ module.exports = async () => {
   });
   await Post.create({
     id: testPostId,
-    userId: testUserId,
     firstName: "John",
     lastName: "Doe",
     email: "johndoe@gmail.com",
     password: "johndoe",
+    username: testUserUsername,
   });
 };

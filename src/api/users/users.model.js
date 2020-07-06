@@ -7,11 +7,13 @@ const { randomAvatar } = require("../../util");
 const User = db.define(
   "user",
   {
-    id: {
-      type: Sequelize.UUID,
+    username: {
+      type: Sequelize.STRING,
       allowNull: false,
       primaryKey: true,
-      defaultValue: Sequelize.UUIDV4,
+      validate: {
+        notContains: " ", // don't allow space
+      },
     },
     firstName: {
       type: Sequelize.STRING,
@@ -37,6 +39,9 @@ const User = db.define(
       validate: {
         isUrl: true,
       },
+    },
+    desc: {
+      type: Sequelize.TEXT,
     },
   },
   {

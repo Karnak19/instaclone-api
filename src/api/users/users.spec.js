@@ -2,7 +2,7 @@ const supertest = require("supertest");
 
 const app = require("../../app");
 const db = require("../../../db");
-const { testUserId } = require("../../util");
+const { testUserUsername } = require("../../util");
 
 describe("GET /api/v1/users", () => {
   it("Should respond with an array of users", async () => {
@@ -15,10 +15,10 @@ describe("GET /api/v1/users", () => {
   });
 });
 
-describe("GET /api/v1/users/id", () => {
+describe("GET /api/v1/users/username", () => {
   it("Should respond with a specific user", async () => {
     const res = await supertest(app)
-      .get(`/api/v1/users/${testUserId}`)
+      .get(`/api/v1/users/${testUserUsername}`)
       .expect(200)
       .expect("Content-Type", /json/);
 
@@ -26,10 +26,10 @@ describe("GET /api/v1/users/id", () => {
   });
 });
 
-describe("GET /api/v1/users/id/posts", () => {
+describe("GET /api/v1/users/username/posts", () => {
   it("Should respond with an array of user posts", async () => {
     const res = await supertest(app)
-      .get(`/api/v1/users/${testUserId}/posts`)
+      .get(`/api/v1/users/${testUserUsername}/posts`)
       .expect(200)
       .expect("Content-Type", /json/);
 
@@ -42,6 +42,7 @@ describe("POST /api/v1/users", () => {
     const res = await supertest(app)
       .post("/api/v1/users")
       .send({
+        username: "jane_doe12",
         firstName: "Jane",
         lastName: "Doe",
         email: "janedoe@gmail.com",

@@ -40,6 +40,7 @@ describe("POST /auth/register", () => {
     const res = await supertest(app)
       .post("/auth/register")
       .send({
+        username: "mark-doe",
         firstName: "Mark",
         lastName: "Doe",
         email: "markdoe@gmail.com",
@@ -57,6 +58,7 @@ describe("POST /auth/register", () => {
     const res = await supertest(app)
       .post("/auth/register")
       .send({
+        username: "mark-doe12",
         firstName: "Mark",
         lastName: "Doe",
         email: "markdoe@gmail.com",

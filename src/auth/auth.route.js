@@ -18,6 +18,10 @@ router.post("/login", async (req, res, next) => {
       },
     });
 
+    if (!user) {
+      throw new Error("User not found");
+    }
+
     const isValid = user.validPassword(password);
     if (isValid) {
       const token = jwt.sign(
@@ -45,8 +49,8 @@ router.post("/login", async (req, res, next) => {
 });
 
 router.post("/register", async (req, res, next) => {
-  const { email, password, firstName, lastName, avatar } = req.body;
-  const payload = { email, password, firstName, lastName, avatar };
+  const { username, email, password, firstName, lastName, avatar } = req.body;
+  const payload = { username, email, password, firstName, lastName, avatar };
 
   try {
     const [user, created] = await User.findCreateFind({ where: { email }, defaults: payload });

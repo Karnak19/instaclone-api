@@ -14,28 +14,27 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-router.get("/:id", async (req, res, next) => {
+router.get("/:username", async (req, res, next) => {
   try {
-    const user = await User.findByPk(req.params.id);
+    const user = await User.findByPk(req.params.username);
     res.status(200).json(user);
   } catch (error) {
     next(error);
   }
 });
 
-router.get("/:id/posts", async (req, res, next) => {
+router.get("/:username/posts", async (req, res, next) => {
   try {
-    const posts = await Post.findAll({ where: { userId: req.params.id } });
+    const posts = await Post.findAll({ where: { username: req.params.username } });
     res.status(200).json(posts);
   } catch (error) {
-    console.log(error.message);
     next(error);
   }
 });
 
 router.post("/", async (req, res, next) => {
-  const { email, password, avatar, firstName, lastName } = req.body;
-  const payload = { email, password, avatar, firstName, lastName };
+  const { username, email, password, avatar, firstName, lastName } = req.body;
+  const payload = { username, email, password, avatar, firstName, lastName };
   try {
     const newUser = await User.create(payload);
     delete newUser.dataValues["password"];

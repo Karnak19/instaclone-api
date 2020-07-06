@@ -21,11 +21,11 @@ function randomAvatar() {
   return avatars[Math.floor(Math.random() * avatars.length)];
 }
 
-const testUserId = "5f40e495-a638-4249-966d-09c54a6760b0";
+const testUserUsername = "toto56";
 const testPostId = "8c0381bb-33ea-4981-a280-7c9b1886a987";
 
 module.exports = {
-  testUserId,
+  testUserUsername,
   testPostId,
   randomAvatar,
 };
