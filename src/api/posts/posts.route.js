@@ -26,7 +26,7 @@ router.get("/:id", async (req, res) => {
 
 router.post("/", async (req, res, next) => {
   const { desc, image } = req.body;
-  const payload = { desc, image, userId: req.user.id };
+  const payload = { desc, image, username: req.user.username };
   try {
     const newPost = await Post.create(payload);
 

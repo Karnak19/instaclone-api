@@ -26,7 +26,6 @@ const authJwt = (req, res, next) => {
 
     if (bearer === "Bearer" && token) {
       const decoded = jwt.verify(token, process.env.SECRET);
-
       req.user = decoded;
       next();
     }

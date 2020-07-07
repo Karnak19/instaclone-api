@@ -1,14 +1,14 @@
 GET http://localhost:4040/api/v1/posts HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE2NjhhMmMyLWEzOTMtNDNiNS1iMmI1LTk4Y2Y5YTliMmNlOCIsImVtYWlsIjoiYmFzaWxlNjQudkBnbWFpbC5jb20iLCJpYXQiOjE1OTM2OTgxMTAsImV4cCI6MTU5MzcwMTcxMH0.QQeXWSMLjFhqRj_ImgQCs-jDCkxUXENX1DOYVB-CBGY
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJhc2lsZUB3aWxkLmNvbSIsImlhdCI6MTU5NDA0NDkxMCwiZXhwIjoxNTk0MDQ4NTEwfQ.37StoqoUAGVQ9-l2AdqDU70m9zPAfB1cR1VIdMet-uM
 
 ###
 POST http://localhost:4040/api/v1/posts HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImJjMzc2NTQ2LThjN2MtNGUzZi1hZjkwLTFlNmE5YWRmZGM0NCIsImVtYWlsIjoiYmFzaWxlNjQudkBnbWFpbC5jb20iLCJpYXQiOjE1OTM3MjQyODEsImV4cCI6MTU5MzcyNzg4MX0.DONFwsgqzsy1sdbbd6GEAVeGOP8JMPo9_BC3qEu8Vj8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImJhemVzbyIsImVtYWlsIjoiYmFzaWxlQHdpbGQuY29tIiwiaWF0IjoxNTk0MDQ1MTA5LCJleHAiOjE1OTQwNDg3MDl9.H9vNwGmE-CkBM0FOd477lTSnf0o03ys6jxrNXpIQ5BA
 
 
 {
   "desc": "Lorem Ipsum",
-  "userId": "0a18970a-7408-4642-86a9-dc3084cec86d",
+  "username": "bazeso",
   "image": "https://scontent-cdg2-1.cdninstagram.com/v/t51.2885-15/e35/p1080x1080/93872183_558401974813063_2254257343780386085_n.jpg?_nc_ht=scontent-cdg2-1.cdninstagram.com&_nc_cat=107&_nc_ohc=Vt3TKMPGEeYAX8OP6Vc&oh=ff118f8cdafc057827363fc837119134&oe=5F273C7E"
 } 
