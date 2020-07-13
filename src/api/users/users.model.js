@@ -2,7 +2,7 @@ const Sequelize = require("sequelize");
 const bcrypt = require("bcrypt");
 
 const db = require("../../../db");
-const { randomAvatar } = require("../../util");
+const { randomAvatar, encryptPasswordIfChanged } = require("../../util");
 
 const User = db.define(
   "user",
@@ -56,10 +56,8 @@ const User = db.define(
           user.avatar = randomAvatar();
         }
       },
-      beforeCreate: (user) => {
-        const salt = bcrypt.genSaltSync();
-        user.password = bcrypt.hashSync(user.password, salt);
-      },
+      beforeCreate: encryptPasswordIfChanged,
+      beforeUpdate: encryptPasswordIfChanged,
     },
     defaultScope: {
       attributes: {

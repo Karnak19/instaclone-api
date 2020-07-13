@@ -23,6 +23,23 @@ router.get("/:username", async (req, res, next) => {
   }
 });
 
+router.put("/:uname", async (req, res, next) => {
+  const { password, desc, username, firstName, lastName, email } = req.body;
+  const { uname } = req.params;
+  try {
+    const payload = { password, desc, username, firstName, lastName, email };
+    await User.update(payload, {
+      where: {
+        username: uname,
+      },
+      individualHooks: true,
+    });
+    res.status(204).end();
+  } catch (error) {
+    next(error);
+  }
+});
+
 router.get("/:username/posts", async (req, res, next) => {
   try {
     const posts = await Post.findAll({ where: { username: req.params.username } });
@@ -39,6 +56,25 @@ router.post("/", async (req, res, next) => {
     const newUser = await User.create(payload);
     delete newUser.dataValues["password"];
     res.status(201).json(newUser);
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.get("/:username/followers", async (req, res, next) => {
+  try {
+    const followers = await User.findAll({
+      where: {
+        username: req.params.username,
+      },
+      include: [
+        {
+          model: User,
+          as: "follower",
+        },
+      ],
+    });
+    res.status(200).json(followers);
   } catch (error) {
     next(error);
   }

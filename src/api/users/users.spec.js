@@ -56,6 +56,21 @@ describe("POST /api/v1/users", () => {
   });
 });
 
+describe("PUT /api/v1/users", () => {
+  it("Should respond with a 204", async () => {
+    const res = await supertest(app)
+      .put(`/api/v1/users/${testUserUsername}`)
+      .send({
+        firstName: "Jane",
+        lastName: "Doez",
+      })
+      .set("Accept", "application/json")
+      .expect(204);
+
+    expect(res.body).not.toHaveProperty("password");
+  });
+});
+
 afterAll(async (done) => {
   db.close();
   done();

@@ -10,9 +10,17 @@ const { notFound, errorHandler } = require("./middlewares");
 
 const app = express();
 
+const whitelist = process.env.CLIENT_URL.split(", ");
+
 app.use(
   cors({
-    origin: process.env.CLIENT_URL,
+    origin: (origin, cb) => {
+      if (whitelist.indexOf(origin) !== -1 || !origin) {
+        cb(null, true);
+      } else {
+        cb(new Error("Not allowed by CORS"));
+      }
+    },
   })
 );
 app.use(helmet());

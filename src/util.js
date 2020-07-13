@@ -1,3 +1,5 @@
+const bcrypt = require("bcrypt");
+
 function randomAvatar() {
   const avatars = [
     "https://cdn.iconscout.com/icon/free/png-256/avatar-365-456317.png",
@@ -21,11 +23,19 @@ function randomAvatar() {
   return avatars[Math.floor(Math.random() * avatars.length)];
 }
 
+function encryptPasswordIfChanged(user, options) {
+  if (user.changed("password")) {
+    const salt = bcrypt.genSaltSync();
+    user.password = bcrypt.hashSync(user.get("password"), salt);
+  }
+}
+
 const testUserUsername = "toto56";
 const testPostId = "8c0381bb-33ea-4981-a280-7c9b1886a987";
 
 module.exports = {
   testUserUsername,
   testPostId,
+  encryptPasswordIfChanged,
   randomAvatar,
 };
