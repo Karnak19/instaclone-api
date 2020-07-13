@@ -28,6 +28,7 @@ router.post("/login", async (req, res, next) => {
         {
           username: user.dataValues.username,
           email: user.dataValues.email,
+          role: user.dataValues.role,
         },
         process.env.SECRET,
         {

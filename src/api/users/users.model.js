@@ -40,6 +40,11 @@ const User = db.define(
         isUrl: true,
       },
     },
+    role: {
+      type: Sequelize.STRING,
+      allowNull: false,
+      defaultValue: "USER",
+    },
     desc: {
       type: Sequelize.TEXT,
     },
